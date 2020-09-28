@@ -24,6 +24,7 @@ namespace TestControl
         }
 
         public ArrayList ArrayList = new ArrayList();
+         List<number> numbers = new List<number>();
 
         public TestForm()
         {
@@ -32,9 +33,18 @@ namespace TestControl
             ArrayList.Add("Значение3");
             ArrayList.Add("Значение4");
             ArrayList.Add("Значение5");
+            numbers.Add(new number(1, 2, 3, 4, 5));
+            numbers.Add(new number(1, 3, 3, 4, 5));
+            numbers.Add(new number(1, 4, 3, 4, 5));
+            numbers.Add(new number(1, 4, 2, 4, 5));
+            numbers.Add(new number(1, 5, 1, 4, 5));
             InitializeComponent();
             controlComboBoxSelected.LoadEnumeration(typeof(TestEnum));
             userControlSelect.List = ArrayList.ToArray();
+            foreach(var temp in numbers)
+            {
+
+            }
         }
         private void buttonChange_Click(object sender, EventArgs e)
         {
