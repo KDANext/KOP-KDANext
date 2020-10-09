@@ -41,11 +41,46 @@ namespace TestControl
             InitializeComponent();
             controlComboBoxSelected.LoadEnumeration(typeof(TestEnum));
             userControlSelect.List = ArrayList.ToArray();
+            treeView1.Nodes.Add("Start");
+            var node = treeView1.Nodes;
             foreach(var temp in numbers)
             {
-
+                foreach(var num in temp.getArr())
+                {
+                    node = wft(node, num.ToString());
+                }
+                node = treeView1.Nodes;
             }
         }
+
+        public TreeNodeCollection wft(TreeNodeCollection node, String text)
+        {
+            if (node.Count == 0)
+            {
+                node.Add(text);
+                return node[0].Nodes;
+            } 
+            else
+            {
+                bool needNewNode = true;
+                for(int i = 0; i < node.Count; i++)
+                {
+                    if (node[i].Text == text)
+                    {
+                        needNewNode = false;
+                        break;
+                    }
+                }
+                if (needNewNode)
+                {
+                    node.Add(text);
+                    return node[node.Count-1].Nodes;
+                }
+            }
+
+            return null;
+        }
+
         private void buttonChange_Click(object sender, EventArgs e)
         {
             controlComboBoxSelected.SelectedIndex = 0;
