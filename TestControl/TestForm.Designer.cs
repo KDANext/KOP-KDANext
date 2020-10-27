@@ -38,7 +38,8 @@
             this.buttonMax = new System.Windows.Forms.Button();
             this.buttonMin = new System.Windows.Forms.Button();
             this.textBoxInpunSize = new System.Windows.Forms.TextBox();
-            this.treeView1 = new System.Windows.Forms.TreeView();
+            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.userControlListOutput = new Var35n6n18n27.UserControlListOutput();
             this.SuspendLayout();
             // 
             // ButtonChange
@@ -130,19 +131,29 @@
             this.textBoxInpunSize.Size = new System.Drawing.Size(148, 26);
             this.textBoxInpunSize.TabIndex = 8;
             // 
-            // treeView1
+            // richTextBox1
             // 
-            this.treeView1.Location = new System.Drawing.Point(820, 18);
-            this.treeView1.Name = "treeView1";
-            this.treeView1.Size = new System.Drawing.Size(367, 315);
-            this.treeView1.TabIndex = 9;
+            this.richTextBox1.Location = new System.Drawing.Point(12, 341);
+            this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.Size = new System.Drawing.Size(1175, 230);
+            this.richTextBox1.TabIndex = 10;
+            this.richTextBox1.Text = "";
+            // 
+            // userControlListOutput
+            // 
+            this.userControlListOutput.Location = new System.Drawing.Point(812, 20);
+            this.userControlListOutput.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.userControlListOutput.Name = "userControlListOutput";
+            this.userControlListOutput.Size = new System.Drawing.Size(375, 313);
+            this.userControlListOutput.TabIndex = 11;
             // 
             // TestForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1199, 349);
-            this.Controls.Add(this.treeView1);
+            this.ClientSize = new System.Drawing.Size(1199, 583);
+            this.Controls.Add(this.userControlListOutput);
+            this.Controls.Add(this.richTextBox1);
             this.Controls.Add(this.textBoxInpunSize);
             this.Controls.Add(this.buttonMin);
             this.Controls.Add(this.buttonMax);
@@ -171,7 +182,8 @@
         private System.Windows.Forms.Button buttonMax;
         private System.Windows.Forms.Button buttonMin;
         private System.Windows.Forms.TextBox textBoxInpunSize;
-        private System.Windows.Forms.TreeView treeView1;
+        private System.Windows.Forms.RichTextBox richTextBox1;
+        private Var35n6n18n27.UserControlListOutput userControlListOutput;
     }
 }
 

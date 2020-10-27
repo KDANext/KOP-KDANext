@@ -14,7 +14,15 @@ namespace Var35n6n18n27
     {
         public int Max { set; private get;}
         public int Min { set; private get;}
-        public int Result { get; private set; }
+        public Nullable<int> Result
+        {
+            get => Result;
+            set 
+            {
+                this.Result = value;
+                textBoxInput.Text = Result.ToString();
+            }
+        }
         public UserControlInput()
         {
             InitializeComponent();
@@ -24,11 +32,13 @@ namespace Var35n6n18n27
             if (Max == Min)
             {
                 textBoxInformation.Text = "Некоректно макс не ровно мин";
+                Result = null;
                 return;
             }
             if (Max == Min && Max == 0)
             {
                 textBoxInformation.Text = "Мак мин не выставлены";
+                Result = null;
                 return;
             }
             int Inpunt;
@@ -44,12 +54,13 @@ namespace Var35n6n18n27
             else if (textBoxInformation.Text == "")
             {
                 textBoxInformation.Text = "Ничего не введено";
+                Result = null;
                 return;
             }
             else
             {
                 textBoxInformation.Text = "ВВедено не число";
-                Result = 0;
+                Result = null;
                 return;
             }
         }

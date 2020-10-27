@@ -7,12 +7,12 @@ using Var35n6n18n27;
 
 namespace TestControl
 {
-    public class People : ITreeView
+    public class People
     {
-        private int Id;
-        private String Post;
-        private String Deport;
-        private String FIO;
+        public int Id { get; set; }
+        public String Post { get; set; }
+        public String Deport { get; set; }
+        public String FIO { get; set; }
 
         public People(int Id,String Post,String Deport,String FIO)
         {
@@ -22,9 +22,6 @@ namespace TestControl
             this.FIO = FIO;
         }
 
-        public string[] GetInternals()
-        {
-            return new string[] { Id.ToString(), Post, Deport, FIO };
-        }
+        
     }
 }

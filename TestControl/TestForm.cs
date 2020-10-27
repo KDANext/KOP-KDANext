@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -24,7 +25,7 @@ namespace TestControl
         }
 
         public ArrayList ArrayList = new ArrayList();
-         List<number> numbers = new List<number>();
+        public List<People> peoples= new List<People>();
 
         public TestForm()
         {
@@ -33,53 +34,29 @@ namespace TestControl
             ArrayList.Add("Значение3");
             ArrayList.Add("Значение4");
             ArrayList.Add("Значение5");
-            numbers.Add(new number(1, 2, 3, 4, 5));
-            numbers.Add(new number(1, 3, 3, 4, 5));
-            numbers.Add(new number(1, 4, 3, 4, 5));
-            numbers.Add(new number(1, 4, 2, 4, 5));
-            numbers.Add(new number(1, 5, 1, 4, 5));
+            peoples.Add(new People(1, "q", "q", "e"));
+            peoples.Add(new People(1, "q", "e", "e"));
+            peoples.Add(new People(1, "e", "w", "e"));
+            peoples.Add(new People(1, "r", "w", "e"));
+            peoples.Add(new People(1, "t", "y", "e"));
             InitializeComponent();
             controlComboBoxSelected.LoadEnumeration(typeof(TestEnum));
             userControlSelect.List = ArrayList.ToArray();
-            treeView1.Nodes.Add("Start");
-            var node = treeView1.Nodes;
-            foreach(var temp in numbers)
-            {
-                foreach(var num in temp.getArr())
-                {
-                    node = wft(node, num.ToString());
-                }
-                node = treeView1.Nodes;
-            }
+            userControlListOutput.AddAll(peoples);
+            userControlListOutput.SetOrder(new string[] { "Deport", "FIO", "Id","Post" });
+            wtf(peoples[0]);
         }
 
-        public TreeNodeCollection wft(TreeNodeCollection node, String text)
+        private void wtf(Object temp)
         {
-            if (node.Count == 0)
+            Type t = temp.GetType();
+            PropertyInfo[] props = t.GetProperties();
+            foreach(var prop in props)
             {
-                node.Add(text);
-                return node[0].Nodes;
-            } 
-            else
-            {
-                bool needNewNode = true;
-                for(int i = 0; i < node.Count; i++)
-                {
-                    if (node[i].Text == text)
-                    {
-                        needNewNode = false;
-                        break;
-                    }
-                }
-                if (needNewNode)
-                {
-                    node.Add(text);
-                    return node[node.Count-1].Nodes;
-                }
+                Console.WriteLine(String.Format("{0}{1}{2}", prop.Name, prop.PropertyType.Name, prop.GetValue(temp)));
             }
-
-            return null;
         }
+        
 
         private void buttonChange_Click(object sender, EventArgs e)
         {
